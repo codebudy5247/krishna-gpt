@@ -1,0 +1,4 @@
+GET http://localhost:3000/api/movies?limit=10 HTTP/1.1
+
+
+Content-Type: application/json
