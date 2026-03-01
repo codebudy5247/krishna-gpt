@@ -3,5 +3,6 @@
     {
       "mode": "auto"
     }
-  ]
+  ],
+  "github.copilot.nextEditSuggestions.enabled": false
 }
