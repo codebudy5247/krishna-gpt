@@ -384,7 +384,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
-  User: 'User'
+  User: 'User',
+  GitaVerse: 'GitaVerse'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -400,7 +401,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user"
+    modelProps: "user" | "gitaVerse"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -478,6 +479,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    GitaVerse: {
+      payload: Prisma.$GitaVersePayload<ExtArgs>
+      fields: Prisma.GitaVerseFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.GitaVerseFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GitaVersePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.GitaVerseFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GitaVersePayload>
+        }
+        findFirst: {
+          args: Prisma.GitaVerseFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GitaVersePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.GitaVerseFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GitaVersePayload>
+        }
+        findMany: {
+          args: Prisma.GitaVerseFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GitaVersePayload>[]
+        }
+        create: {
+          args: Prisma.GitaVerseCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GitaVersePayload>
+        }
+        createMany: {
+          args: Prisma.GitaVerseCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.GitaVerseCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GitaVersePayload>[]
+        }
+        delete: {
+          args: Prisma.GitaVerseDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GitaVersePayload>
+        }
+        update: {
+          args: Prisma.GitaVerseUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GitaVersePayload>
+        }
+        deleteMany: {
+          args: Prisma.GitaVerseDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.GitaVerseUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.GitaVerseUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GitaVersePayload>[]
+        }
+        upsert: {
+          args: Prisma.GitaVerseUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GitaVersePayload>
+        }
+        aggregate: {
+          args: Prisma.GitaVerseAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateGitaVerse>
+        }
+        groupBy: {
+          args: Prisma.GitaVerseGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GitaVerseGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.GitaVerseCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GitaVerseCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -520,10 +595,29 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
-  name: 'name'
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const GitaVerseScalarFieldEnum = {
+  id: 'id',
+  chapter: 'chapter',
+  verse: 'verse',
+  sanskrit: 'sanskrit',
+  transliteration: 'transliteration',
+  wordMeanings: 'wordMeanings',
+  translation: 'translation',
+  commentary: 'commentary',
+  keywords: 'keywords',
+  qdrantId: 'qdrantId',
+  createdAt: 'createdAt'
+} as const
+
+export type GitaVerseScalarFieldEnum = (typeof GitaVerseScalarFieldEnum)[keyof typeof GitaVerseScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -557,20 +651,6 @@ export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
 /**
- * Reference to a field of type 'Int'
- */
-export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-/**
- * Reference to a field of type 'Int[]'
- */
-export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
-
-
-/**
  * Reference to a field of type 'String'
  */
 export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
@@ -581,6 +661,34 @@ export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 
  * Reference to a field of type 'String[]'
  */
 export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+    
+
+
+/**
+ * Reference to a field of type 'DateTime'
+ */
+export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+/**
+ * Reference to a field of type 'DateTime[]'
+ */
+export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Int'
+ */
+export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+/**
+ * Reference to a field of type 'Int[]'
+ */
+export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
 
 
@@ -693,6 +801,7 @@ export type PrismaClientOptions = ({
 }
 export type GlobalOmitConfig = {
   user?: Prisma.UserOmit
+  gitaVerse?: Prisma.GitaVerseOmit
 }
 
 /* Types for Logging */

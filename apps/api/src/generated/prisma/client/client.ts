@@ -46,3 +46,8 @@ export { Prisma }
  * 
  */
 export type User = Prisma.UserModel
+/**
+ * Model GitaVerse
+ * 
+ */
+export type GitaVerse = Prisma.GitaVerseModel

@@ -13,8 +13,29 @@ datasource db {
   provider = "postgresql"
 }
 
-model User { 
-  id    Int     @id @default(autoincrement()) 
-  email String  @unique
-  name  String?
+model User {
+  id        String    @id @default(cuid())
+  email     String    @unique
+  name      String    @db.VarChar(100)
+  createdAt DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime  @updatedAt @db.Timestamptz(3)
+
+  @@map("users")
+}
+
+model GitaVerse {
+  id              String   @id @default(cuid())
+  chapter         Int
+  verse           Int
+  sanskrit        String   @db.Text
+  transliteration String?  @db.Text
+  wordMeanings    String?  @db.Text
+  translation     String   @db.Text
+  commentary      String?  @db.Text
+  keywords        String[]
+  qdrantId        String   @unique
+  createdAt       DateTime @default(now())
+
+  @@unique([chapter, verse])
+  @@map("gita_verses")
 }

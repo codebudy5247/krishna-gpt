@@ -51,7 +51,8 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  User: 'User'
+  User: 'User',
+  GitaVerse: 'GitaVerse'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -73,10 +74,29 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
-  name: 'name'
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const GitaVerseScalarFieldEnum = {
+  id: 'id',
+  chapter: 'chapter',
+  verse: 'verse',
+  sanskrit: 'sanskrit',
+  transliteration: 'transliteration',
+  wordMeanings: 'wordMeanings',
+  translation: 'translation',
+  commentary: 'commentary',
+  keywords: 'keywords',
+  qdrantId: 'qdrantId',
+  createdAt: 'createdAt'
+} as const
+
+export type GitaVerseScalarFieldEnum = (typeof GitaVerseScalarFieldEnum)[keyof typeof GitaVerseScalarFieldEnum]
 
 
 export const SortOrder = {
